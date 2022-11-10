@@ -1,0 +1,7 @@
+All images converted and resized with http://www.aconvert.com/image/
+
+wood_texture.dds cropped (Total Textures - R2 Copyright 3DTotal.com)
+wood_texture_specular.dds cropped (Total Textures - R2 Copyright 3DTotal.com)
+bricks_diffuse.dds (Total Textures - R2 Copyright 3DTotal.com)
+bricks_specular.dds (Total Textures - R2 Copyright 3DTotal.com)
+skybox Yokohama converted (http://www.humus.name/index.php?page=Textures&start=0)
