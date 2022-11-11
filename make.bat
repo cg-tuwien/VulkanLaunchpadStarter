@@ -12,7 +12,7 @@ GOTO DONE
 set @location="_install"
 if NOT "%2"=="" set @location="%2"
 cmake -H. -B_project -A "x64" -DCMAKE_INSTALL_PREFIX=%@location% 
-cmake --build _project --config Release --target INSTALL
+cmake --build _project --config Release --target install
 GOTO DONE
 
 :CLEAN
