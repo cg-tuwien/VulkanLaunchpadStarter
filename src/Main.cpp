@@ -88,6 +88,11 @@ int main(int argc, char** argv)
 	int window_height = 800;
 	bool fullscreen = false;
 	std::string window_title = "Task 0";
+	float field_of_view = 60.0f;
+	float near_plane_distance = 0.1f;
+	float far_plane_distance = 100.0f;
+	float aspect_ratio = window_width / window_height;
+
 	// Install a callback function, which gets invoked whenever a GLFW error occurred.
 	glfwSetErrorCallback(errorCallbackFromGlfw);
 
