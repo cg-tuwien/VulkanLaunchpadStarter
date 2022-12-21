@@ -1,0 +1,7 @@
+deb-src http://packages.linuxmint.com vera main upstream import backport
+
+deb-src http://archive.ubuntu.com/ubuntu jammy main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu jammy-updates main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu jammy-backports main restricted universe multiverse
+
+deb-src http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
