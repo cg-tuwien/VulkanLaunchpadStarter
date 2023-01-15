@@ -1,14 +1,9 @@
 /*
- * Copyright 2021 TU Wien, Institute of Visual Computing & Human-Centered Technology.
- * This file is part of the VKL Lab Framework and must not be redistributed.
- *
- * Original version created by Lukas Gersthofer and Bernhard Steiner.
- * Vulkan edition created by Johannes Unterguggenberger (junt@cg.tuwien.ac.at).
+ * Copyright 2023 TU Wien, Institute of Visual Computing & Human-Centered Technology.
  */
 #include "VulkanLaunchpad.h"
 #include <vulkan/vulkan.h>
 #include <vector>
-
 
 #define ADD_SHADER_DIR(x) ("assets/shaders/" + std::string(x)).c_str()
 
@@ -66,7 +61,6 @@ VkSurfaceFormatKHR getSurfaceImageFormat(VkPhysicalDevice physical_device, VkSur
  */
 VkSurfaceTransformFlagBitsKHR getSurfaceTransform(VkPhysicalDevice physical_device, VkSurfaceKHR surface);
 
-
 /*!
  *	This callback function gets invoked by GLFW whenever a GLFW error occured.
  */
@@ -80,87 +74,84 @@ void errorCallbackFromGlfw(int error, const char* description) {
 
 int main(int argc, char** argv)
 {
-	/* --------------------------------------------- */
-	// Subtask 1.1: Load Settings From File
-	/* --------------------------------------------- */
+	// Some settings:
+	constexpr int window_width = 800;
+	constexpr int window_height = 800;
+	constexpr bool fullscreen = false;
+	constexpr char* window_title = "Tutorial Window";
+	constexpr float field_of_view = 60.0f;
+	constexpr float near_plane_distance = 0.1f;
+	constexpr float far_plane_distance = 100.0f;
+	constexpr float aspect_ratio = window_width / window_height;
 
-	int window_width = 800;
-	int window_height = 800;
-	bool fullscreen = false;
-	std::string window_title = "Task 0";
-	float field_of_view = 60.0f;
-	float near_plane_distance = 0.1f;
-	float far_plane_distance = 100.0f;
-	float aspect_ratio = window_width / window_height;
-
-	// Install a callback function, which gets invoked whenever a GLFW error occurred.
+	// Install a callback function, which gets invoked whenever a GLFW error occurred:
 	glfwSetErrorCallback(errorCallbackFromGlfw);
 
-	/* --------------------------------------------- */
-	// Subtask 1.2: Create a Window with GLFW
-	/* --------------------------------------------- */
+	// Initialize GLFW:
 	if (!glfwInit()) {
 		VKL_EXIT_WITH_ERROR("Failed to init GLFW");
 	}
 
-	glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API); // No need to create a graphics context for Vulkan
-	glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
-	
-	// Open window
+	/* --------------------------------------------- */
+	// Task 1.1: Create a Window with GLFW
+	/* --------------------------------------------- */
+	// Use a monitor if we'd like to open the window in fullscreen mode:
 	GLFWmonitor* monitor = nullptr;
-
 	if (fullscreen) {
 		monitor = glfwGetPrimaryMonitor();
 	}
 
-	GLFWwindow* window = glfwCreateWindow(window_width, window_height, window_title.c_str(), monitor, nullptr);
+	// Set some window settings before creating the window:
+	glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API); // No need to create a graphics context for Vulkan
+	glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+
+	GLFWwindow* window = nullptr;
 	
 	if (!window) {
-		VKL_EXIT_WITH_ERROR("Failed to create window");
+		VKL_EXIT_WITH_ERROR("No GLFW window created.");
 	}
 
 	VkResult result;
-	VkInstance vk_instance              = VK_NULL_HANDLE; // To be set during Subtask 1.3
-	VkSurfaceKHR vk_surface             = VK_NULL_HANDLE; // To be set during Subtask 1.4
-	VkPhysicalDevice vk_physical_device = VK_NULL_HANDLE; // To be set during Subtask 1.5
-	VkDevice vk_device                  = VK_NULL_HANDLE; // To be set during Subtask 1.7
-	VkQueue vk_queue                    = VK_NULL_HANDLE; // To be set during Subtask 1.7
-	VkSwapchainKHR vk_swapchain         = VK_NULL_HANDLE; // To be set during Subtask 1.8
+	VkInstance vk_instance              = VK_NULL_HANDLE; // To be set during Task 1.2
+	VkSurfaceKHR vk_surface             = VK_NULL_HANDLE; // To be set during Task 1.3
+	VkPhysicalDevice vk_physical_device = VK_NULL_HANDLE; // To be set during Task 1.4
+	VkDevice vk_device                  = VK_NULL_HANDLE; // To be set during Task 1.5
+	VkQueue vk_queue                    = VK_NULL_HANDLE; // To be set during Task 1.6
+	VkSwapchainKHR vk_swapchain         = VK_NULL_HANDLE; // To be set during Task 1.7
 
 	/* --------------------------------------------- */
-	// Subtask 1.3: Create a Vulkan Instance
+	// Task 1.2: Create a Vulkan Instance
 	/* --------------------------------------------- */
 	VkApplicationInfo application_info = {}; // Zero-initialize every member
 	application_info.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO; // Set the struct's type
-	application_info.pEngineName = "VKL_VK_Library";
-	application_info.engineVersion = VK_MAKE_API_VERSION(0, 2021, 1, 0);
-	application_info.pApplicationName = "VKL_VK_Solution";
-	application_info.applicationVersion = VK_MAKE_API_VERSION(0, 2021, 1, 1);
+	application_info.pEngineName = "Vulkan Launchpad";
+	application_info.engineVersion = VK_MAKE_API_VERSION(0, 2023, 1, 0);
+	application_info.pApplicationName = "Tutorial";
+	application_info.applicationVersion = VK_MAKE_API_VERSION(0, 2023, 1, 1);
 	application_info.apiVersion = VK_API_VERSION_1_1;
 
 	VkInstanceCreateInfo instance_create_info = {}; // Zero-initialize every member
 	instance_create_info.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO; // Set the struct's type
 	instance_create_info.pApplicationInfo = &application_info;
 
+	/* --------------------------------------------- */
+	// Task 1.3: Create a Vulkan Window Surface
+	/* --------------------------------------------- */
 
 	/* --------------------------------------------- */
-	// Subtask 1.4: Create a Vulkan Window Surface
-	/* --------------------------------------------- */
-
-	/* --------------------------------------------- */
-	// Subtask 1.5: Pick a Physical Device
+	// Task 1.4 Pick a Physical Device
 	/* --------------------------------------------- */
 	
 	/* --------------------------------------------- */
-	// Subtask 1.6: Select a Queue Family
+	// Task 1.5: Select a Queue Family
 	/* --------------------------------------------- */
 
 	/* --------------------------------------------- */
-	// Subtask 1.7: Create a Logical Device and Get Queue
+	// Task 1.6: Create a Logical Device and Get Queue
 	/* --------------------------------------------- */
 
 	/* --------------------------------------------- */
-	// Subtask 1.8: Create a Swapchain
+	// Task 1.7: Create Swap Chain
 	/* --------------------------------------------- */
 	uint32_t queueFamilyIndexCount = 0u;
 	std::vector<uint32_t>queueFamilyIndices;
@@ -186,7 +177,7 @@ int main(int argc, char** argv)
 	swapchain_create_info.pQueueFamilyIndices = queueFamilyIndices.data();
 
 	/* --------------------------------------------- */
-	// Subtask 1.9: Init VKL Framework
+	// Task 1.8: Initialize Vulkan Launchpad
 	/* --------------------------------------------- */
 
 	// Gather swapchain config as required by the framework:
@@ -197,17 +188,16 @@ int main(int argc, char** argv)
 		VKL_EXIT_WITH_ERROR("Failed to init framework");
 	}
 
-
 	/* --------------------------------------------- */
-	// Subtask 1.10: Set-up the Render Loop
-	// Subtask 1.11: Register a Key Callback
+	// Task 1.9:  Set-up the Render Loop
+	// Task 1.10: Register a Key Callback
 	/* --------------------------------------------- */
 
 	// Wait for all GPU work to finish before cleaning up:
 	vkDeviceWaitIdle(vk_device);
 
 	/* --------------------------------------------- */
-	// Subtask 1.12: Cleanup
+	// Subtask 1.11: Cleanup
 	/* --------------------------------------------- */
 	vklDestroyFramework();
 
