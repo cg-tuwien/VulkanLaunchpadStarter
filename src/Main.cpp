@@ -107,23 +107,39 @@ int main(int argc, char** argv)
 	/* --------------------------------------------- */
 	VkSurfaceKHR vk_surface             = VK_NULL_HANDLE; // TODO: Set to a valid handle!
 
-	VkResult result = VK_NOT_READY;
+	VkResult result = VK_ERROR_INITIALIZATION_FAILED;
 	VKL_CHECK_VULKAN_RESULT(result);
+
+	if (!vk_surface) {
+		VKL_EXIT_WITH_ERROR("No VkSurfaceKHR created or handle not assigned.");
+	}
 
 	/* --------------------------------------------- */
 	// Task 1.4 Pick a Physical Device
 	/* --------------------------------------------- */
 	VkPhysicalDevice vk_physical_device = VK_NULL_HANDLE; // TODO: Set to a valid handle!
 	
+	if (!vk_physical_device) {
+		VKL_EXIT_WITH_ERROR("No VkPhysicalDevice selected or handle not assigned.");
+	}
+
 	/* --------------------------------------------- */
 	// Task 1.5: Select a Queue Family
 	/* --------------------------------------------- */
 	VkDevice vk_device                  = VK_NULL_HANDLE; // TODO: Set to a valid handle!
 
+	if (!vk_device) {
+		VKL_EXIT_WITH_ERROR("No VkDevice created or handle not assigned.");
+	}
+
 	/* --------------------------------------------- */
 	// Task 1.6: Create a Logical Device and Get Queue
 	/* --------------------------------------------- */
 	VkQueue vk_queue                    = VK_NULL_HANDLE; // TODO: Set to a valid handle!
+
+	if (!vk_queue) {
+		VKL_EXIT_WITH_ERROR("No VkQueue selected or handle not assigned.");
+	}
 
 	/* --------------------------------------------- */
 	// Task 1.7: Create Swap Chain
@@ -153,6 +169,10 @@ int main(int argc, char** argv)
 	swapchain_create_info.queueFamilyIndexCount = queueFamilyIndexCount;
 	swapchain_create_info.pQueueFamilyIndices = queueFamilyIndices.data();
 
+	if (!vk_swapchain) {
+		VKL_EXIT_WITH_ERROR("No VkSwapchainKHR created or handle not assigned.");
+	}
+
 	/* --------------------------------------------- */
 	// Task 1.8: Initialize Vulkan Launchpad
 	/* --------------------------------------------- */
@@ -162,7 +182,7 @@ int main(int argc, char** argv)
 
 	// Init the framework:
 	if (!vklInitFramework(vk_instance, vk_surface, vk_physical_device, vk_device, vk_queue, swapchain_config)) {
-		VKL_EXIT_WITH_ERROR("Failed to init framework");
+		VKL_EXIT_WITH_ERROR("Failed to init Vulkan Launchpad");
 	}
 
 	/* --------------------------------------------- */
