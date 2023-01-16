@@ -149,32 +149,33 @@ int main(int argc, char** argv)
 	/* --------------------------------------------- */
 	VkSwapchainKHR vk_swapchain = VK_NULL_HANDLE; // TODO: Set to a valid handle!
 
-	uint32_t queueFamilyIndexCount = 0u;
-	std::vector<uint32_t>queueFamilyIndices;
     VkSurfaceCapabilitiesKHR surface_capabilities = hlpGetPhysicalDeviceSurfaceCapabilities(vk_physical_device, vk_surface);
+	
 	// Build the swapchain config struct:
 	VkSwapchainCreateInfoKHR swapchain_create_info = {};
+	swapchain_create_info.sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR;
 	swapchain_create_info.surface = vk_surface;
 	swapchain_create_info.minImageCount = surface_capabilities.minImageCount;
 	swapchain_create_info.imageArrayLayers = 1u;
 		swapchain_create_info.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
-	if (surface_capabilities.supportedUsageFlags & VK_IMAGE_USAGE_TRANSFER_SRC_BIT)
-	{
+	if (surface_capabilities.supportedUsageFlags & VK_IMAGE_USAGE_TRANSFER_SRC_BIT) {
 		swapchain_create_info.imageUsage |= VK_IMAGE_USAGE_TRANSFER_SRC_BIT;
-	}
-	else
-	{
-		std::cout << "Warning: Automatic Testing might fail, VK_IMAGE_USAGE_TRANSFER_SRC_BIT image usage is not supported" << std::endl;
 	}
 	swapchain_create_info.preTransform = surface_capabilities.currentTransform;
 	swapchain_create_info.compositeAlpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
 	swapchain_create_info.clipped = VK_TRUE;
-	swapchain_create_info.queueFamilyIndexCount = queueFamilyIndexCount;
-	swapchain_create_info.pQueueFamilyIndices = queueFamilyIndices.data();
+	swapchain_create_info.queueFamilyIndexCount = 0;
+	swapchain_create_info.pQueueFamilyIndices = nullptr;
+
 
 	if (!vk_swapchain) {
 		VKL_EXIT_WITH_ERROR("No VkSwapchainKHR created or handle not assigned.");
 	}
+
+	// Get all the created VkImages of the swapchain:
+	std::vector<VkImage> swap_chain_images(surface_capabilities.minImageCount);
+	result = vkGetSwapchainImagesKHR(vk_device, vk_swapchain, &surface_capabilities.minImageCount, swap_chain_images.data());
+	VKL_CHECK_VULKAN_RESULT(result);
 
 	/* --------------------------------------------- */
 	// Task 1.8: Initialize Vulkan Launchpad
@@ -182,22 +183,47 @@ int main(int argc, char** argv)
 
 	// Gather swapchain config as required by the framework:
 	VklSwapchainConfig swapchain_config = {};
-
+	swapchain_config.imageExtent = swapchain_create_info.imageExtent;
+	swapchain_config.swapchainHandle = vk_swapchain;
+	for (VkImage vk_image : swap_chain_images) {
+		VklSwapchainFramebufferComposition framebufferData;
+		// Fill the data for the color attachment:
+		framebufferData.colorAttachmentImageDetails.imageHandle = VK_NULL_HANDLE;
+		// Fill the data for the depth attachment:
+		framebufferData.depthAttachmentImageDetails.imageHandle = VK_NULL_HANDLE;
+		// Add it to the vector:
+		swapchain_config.swapchainImages.push_back(framebufferData);
+	}
+	
 	// Init the framework:
 	if (!vklInitFramework(vk_instance, vk_surface, vk_physical_device, vk_device, vk_queue, swapchain_config)) {
 		VKL_EXIT_WITH_ERROR("Failed to init Vulkan Launchpad");
 	}
 
+	// We set up a key callback via GLFW here:
+	glfwSetKeyCallback(window, [](GLFWwindow* glfw_window, int key, int scancode, int action, int mods) {
+		// We only listen to key release events (i.e., only key up, not key down):
+		if (action != GLFW_RELEASE) {
+			return;
+		}
+		// We mark the window that it should close if ESC is pressed:
+		if (key == GLFW_KEY_ESCAPE) { 
+			glfwSetWindowShouldClose(glfw_window, true); 
+		}
+	});
+
 	/* --------------------------------------------- */
-	// Task 1.9:  Set-up the Render Loop
-	// Task 1.10: Register a Key Callback
+	// Task 1.9:  Implement the Render Loop
 	/* --------------------------------------------- */
+	while (!glfwWindowShouldClose(window)) {
+		
+	}
 
 	// Wait for all GPU work to finish before cleaning up:
 	vkDeviceWaitIdle(vk_device);
 
 	/* --------------------------------------------- */
-	// Subtask 1.11: Cleanup
+	// Subtask 1.10: Cleanup
 	/* --------------------------------------------- */
 	vklDestroyFramework();
 
@@ -227,5 +253,8 @@ uint32_t selectQueueFamilyIndex(VkPhysicalDevice physical_device, VkSurfaceKHR s
 	// Get the queue families' data:
 	std::vector<VkQueueFamilyProperties> queue_families(queue_family_count);
 	vkGetPhysicalDeviceQueueFamilyProperties(physical_device, &queue_family_count, queue_families.data());
+	
+	// TODO: Find a suitable queue family index and return it!
+	
 	VKL_EXIT_WITH_ERROR("Unable to find a suitable queue family that supports graphics and presentation on the same queue.");
 }
