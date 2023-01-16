@@ -123,7 +123,7 @@ int main(int argc, char** argv)
 	// Task 1.2: Create a Vulkan Instance
 	/* --------------------------------------------- */
 	VkApplicationInfo application_info = {}; // Zero-initialize every member
-	application_info.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO; // Set the struct's type
+	application_info.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO; // Set this struct instance's type
 	application_info.pEngineName = "Vulkan Launchpad";
 	application_info.engineVersion = VK_MAKE_API_VERSION(0, 2023, 1, 0);
 	application_info.pApplicationName = "Tutorial";
@@ -131,7 +131,7 @@ int main(int argc, char** argv)
 	application_info.apiVersion = VK_API_VERSION_1_1;
 
 	VkInstanceCreateInfo instance_create_info = {}; // Zero-initialize every member
-	instance_create_info.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO; // Set the struct's type
+	instance_create_info.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO; // Set this struct instance's type
 	instance_create_info.pApplicationInfo = &application_info;
 
 	/* --------------------------------------------- */
