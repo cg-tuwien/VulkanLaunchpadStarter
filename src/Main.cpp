@@ -88,7 +88,7 @@ int main(int argc, char** argv)
 	/* --------------------------------------------- */
 	// Task 1.2: Create a Vulkan Instance
 	/* --------------------------------------------- */
-	VkInstance vk_instance              = VK_NULL_HANDLE; // TODO: Set to a valid handle!
+	VkInstance vk_instance = VK_NULL_HANDLE; // TODO: Set to a valid handle!
 
 	VkApplicationInfo application_info = {}; // Zero-initialize every member
 	application_info.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO; // Set this struct instance's type
@@ -112,7 +112,7 @@ int main(int argc, char** argv)
 	/* --------------------------------------------- */
 	// Task 1.3: Create a Vulkan Window Surface
 	/* --------------------------------------------- */
-	VkSurfaceKHR vk_surface             = VK_NULL_HANDLE; // TODO: Set to a valid handle!
+	VkSurfaceKHR vk_surface = VK_NULL_HANDLE; // TODO: Set to a valid handle!
 
 	if (!vk_surface) {
 		VKL_EXIT_WITH_ERROR("No VkSurfaceKHR created or handle not assigned.");
@@ -130,17 +130,16 @@ int main(int argc, char** argv)
 	/* --------------------------------------------- */
 	// Task 1.5: Select a Queue Family
 	/* --------------------------------------------- */
-	VkDevice vk_device                  = VK_NULL_HANDLE; // TODO: Set to a valid handle!
-
-	if (!vk_device) {
-		VKL_EXIT_WITH_ERROR("No VkDevice created or handle not assigned.");
-	}
 
 	/* --------------------------------------------- */
 	// Task 1.6: Create a Logical Device and Get Queue
 	/* --------------------------------------------- */
-	VkQueue vk_queue                    = VK_NULL_HANDLE; // TODO: Set to a valid handle!
+	VkDevice vk_device = VK_NULL_HANDLE; // TODO: Set to a valid handle!
+	VkQueue  vk_queue  = VK_NULL_HANDLE; // TODO: Set to a valid handle!
 
+	if (!vk_device) {
+		VKL_EXIT_WITH_ERROR("No VkDevice created or handle not assigned.");
+	}
 	if (!vk_queue) {
 		VKL_EXIT_WITH_ERROR("No VkQueue selected or handle not assigned.");
 	}
@@ -148,7 +147,7 @@ int main(int argc, char** argv)
 	/* --------------------------------------------- */
 	// Task 1.7: Create Swap Chain
 	/* --------------------------------------------- */
-	VkSwapchainKHR vk_swapchain         = VK_NULL_HANDLE; // TODO: Set to a valid handle!
+	VkSwapchainKHR vk_swapchain = VK_NULL_HANDLE; // TODO: Set to a valid handle!
 
 	uint32_t queueFamilyIndexCount = 0u;
 	std::vector<uint32_t>queueFamilyIndices;
