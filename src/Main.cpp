@@ -101,14 +101,18 @@ int main(int argc, char** argv)
 	VkInstanceCreateInfo instance_create_info = {}; // Zero-initialize every member
 	instance_create_info.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO; // Set this struct instance's type
 	instance_create_info.pApplicationInfo = &application_info;
+	
+	VkResult result = VK_ERROR_INITIALIZATION_FAILED;
+	VKL_CHECK_VULKAN_RESULT(result);
 
+	if (!vk_instance) {
+		VKL_EXIT_WITH_ERROR("No VkInstance created or handle not assigned.");
+	}
+	
 	/* --------------------------------------------- */
 	// Task 1.3: Create a Vulkan Window Surface
 	/* --------------------------------------------- */
 	VkSurfaceKHR vk_surface             = VK_NULL_HANDLE; // TODO: Set to a valid handle!
-
-	VkResult result = VK_ERROR_INITIALIZATION_FAILED;
-	VKL_CHECK_VULKAN_RESULT(result);
 
 	if (!vk_surface) {
 		VKL_EXIT_WITH_ERROR("No VkSurfaceKHR created or handle not assigned.");
@@ -154,7 +158,7 @@ int main(int argc, char** argv)
 	swapchain_create_info.surface = vk_surface;
 	swapchain_create_info.minImageCount = surface_capabilities.minImageCount;
 	swapchain_create_info.imageArrayLayers = 1u;
-	swapchain_create_info.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
+		swapchain_create_info.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
 	if (surface_capabilities.supportedUsageFlags & VK_IMAGE_USAGE_TRANSFER_SRC_BIT)
 	{
 		swapchain_create_info.imageUsage |= VK_IMAGE_USAGE_TRANSFER_SRC_BIT;
