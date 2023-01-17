@@ -50,14 +50,10 @@ uint32_t selectQueueFamilyIndex(VkPhysicalDevice physical_device, VkSurfaceKHR s
 int main(int argc, char** argv)
 {
 	// Some settings:
-	constexpr int window_width = 800;
+	constexpr int window_width  = 800;
 	constexpr int window_height = 800;
 	constexpr bool fullscreen = false;
 	constexpr char* window_title = "Tutorial Window";
-	constexpr float field_of_view = 60.0f;
-	constexpr float near_plane_distance = 0.1f;
-	constexpr float far_plane_distance = 100.0f;
-	constexpr float aspect_ratio = window_width / window_height;
 
 	// Install a callback function, which gets invoked whenever a GLFW error occurred:
 	glfwSetErrorCallback(errorCallbackFromGlfw);
@@ -150,7 +146,7 @@ int main(int argc, char** argv)
 	/* --------------------------------------------- */
 	VkSwapchainKHR vk_swapchain = VK_NULL_HANDLE; // TODO: Set to a valid handle!
 
-    VkSurfaceCapabilitiesKHR surface_capabilities = hlpGetPhysicalDeviceSurfaceCapabilities(vk_physical_device, vk_surface);
+	VkSurfaceCapabilitiesKHR surface_capabilities = hlpGetPhysicalDeviceSurfaceCapabilities(vk_physical_device, vk_surface);
 	
 	// Build the swapchain config struct:
 	VkSwapchainCreateInfoKHR swapchain_create_info = {};
@@ -158,25 +154,16 @@ int main(int argc, char** argv)
 	swapchain_create_info.surface = vk_surface;
 	swapchain_create_info.minImageCount = surface_capabilities.minImageCount;
 	swapchain_create_info.imageArrayLayers = 1u;
-		swapchain_create_info.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
-	if (surface_capabilities.supportedUsageFlags & VK_IMAGE_USAGE_TRANSFER_SRC_BIT) {
-		swapchain_create_info.imageUsage |= VK_IMAGE_USAGE_TRANSFER_SRC_BIT;
-	}
+	swapchain_create_info.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
 	swapchain_create_info.preTransform = surface_capabilities.currentTransform;
 	swapchain_create_info.compositeAlpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
 	swapchain_create_info.clipped = VK_TRUE;
 	swapchain_create_info.queueFamilyIndexCount = 0;
 	swapchain_create_info.pQueueFamilyIndices = nullptr;
 
-
 	if (!vk_swapchain) {
 		VKL_EXIT_WITH_ERROR("No VkSwapchainKHR created or handle not assigned.");
 	}
-
-	// Get all the created VkImages of the swapchain:
-	std::vector<VkImage> swap_chain_images(surface_capabilities.minImageCount);
-	result = vkGetSwapchainImagesKHR(vk_device, vk_swapchain, &surface_capabilities.minImageCount, swap_chain_images.data());
-	VKL_CHECK_VULKAN_RESULT(result);
 
 	/* --------------------------------------------- */
 	// Task 1.8: Initialize Vulkan Launchpad
