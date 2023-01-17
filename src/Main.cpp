@@ -204,6 +204,7 @@ int main(int argc, char** argv)
 	// Task 1.9:  Implement the Render Loop
 	/* --------------------------------------------- */
 	while (!glfwWindowShouldClose(window)) {
+		glfwPollEvents(); // Handle user input
 		
 	}
 
@@ -211,7 +212,7 @@ int main(int argc, char** argv)
 	vkDeviceWaitIdle(vk_device);
 
 	/* --------------------------------------------- */
-	// Subtask 1.10: Cleanup
+	// Task 1.10: Cleanup
 	/* --------------------------------------------- */
 	vklDestroyFramework();
 
