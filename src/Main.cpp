@@ -6,8 +6,9 @@
 #include "VulkanLaunchpad.h"
 #include <vulkan/vulkan.h>
 
-// Include some local Vulkan-specific helper functions:
+// Include some local helper functions:
 #include "VulkanHelpers.h"
+#include "Teapot.h"
 
 /* ------------------------------------------------ */
 // Some more little helpers directly declared here:
