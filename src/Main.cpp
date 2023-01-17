@@ -164,6 +164,11 @@ int main(int argc, char** argv)
 	if (!vk_swapchain) {
 		VKL_EXIT_WITH_ERROR("No VkSwapchainKHR created or handle not assigned.");
 	}
+	
+	// Create a vector of VkImages with enough memory for all the swap chain's images:
+	std::vector<VkImage> swap_chain_images(surface_capabilities.minImageCount);
+	// TODO: Use vkGetSwapchainImagesKHR to write VkImage handles into swap_chain_images.data()!
+	VKL_CHECK_VULKAN_RESULT(result);
 
 	/* --------------------------------------------- */
 	// Task 1.8: Initialize Vulkan Launchpad
