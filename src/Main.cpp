@@ -220,7 +220,7 @@ int main(int argc, char** argv)
 }
 
 /* ------------------------------------------------ */
-// Declarations of little helpers defined above main:
+// Definitions of little helpers defined above main:
 /* ------------------------------------------------ */
 
 void errorCallbackFromGlfw(int error, const char* description) {
