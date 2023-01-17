@@ -53,7 +53,7 @@ int main(int argc, char** argv)
 	constexpr int window_width  = 800;
 	constexpr int window_height = 800;
 	constexpr bool fullscreen = false;
-	constexpr char* window_title = "Tutorial Window";
+	constexpr char* window_title = "An Introduction to Vulkan";
 
 	// Install a callback function, which gets invoked whenever a GLFW error occurred:
 	glfwSetErrorCallback(errorCallbackFromGlfw);
@@ -91,7 +91,7 @@ int main(int argc, char** argv)
 	application_info.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO; // Set this struct instance's type
 	application_info.pEngineName = "Vulkan Launchpad";
 	application_info.engineVersion = VK_MAKE_API_VERSION(0, 2023, 1, 0);
-	application_info.pApplicationName = "Tutorial";
+	application_info.pApplicationName = "An Introduction to Vulkan";
 	application_info.applicationVersion = VK_MAKE_API_VERSION(0, 2023, 1, 1);
 	application_info.apiVersion = VK_API_VERSION_1_1;
 
