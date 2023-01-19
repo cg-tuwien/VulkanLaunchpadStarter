@@ -28,11 +28,6 @@ Vulkan Launchpad runs on Windows, MacOS, and Linux. For building you'll need [Gi
     - _Important:_ Ensure to get CMake version `3.22` or newer!
 
 
-# Vulkan Launchpad Starter
-Starter template for a project based on Vulkan Launchpad
-
-
-
 #### Linux
 
 ##### Dependencies
