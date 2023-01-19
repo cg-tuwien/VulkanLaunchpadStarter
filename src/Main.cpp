@@ -37,12 +37,6 @@ std::vector<const char*> mergeArraysOfStrings(const char** a, uint32_t num_a, co
  */
 uint32_t selectQueueFamilyIndex(VkPhysicalDevice physical_device, VkSurfaceKHR surface);
 
-/*!
- *	Small helper macro that prepends a given path with "assets/shaders/".
- *	@example 	auto pathToShaderFile = ADD_SHADER_DIR("my_shader.vert");
- */
-#define ADD_SHADER_DIR(x) ("assets/shaders/" + std::string(x)).c_str()
-
 /* ------------------------------------------------ */
 // Main
 /* ------------------------------------------------ */
