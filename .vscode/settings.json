@@ -1,0 +1,7 @@
+{
+    "cmake.debugConfig":
+    {
+        "cwd": "${workspaceFolder}",
+        "externalConsole": true
+    }
+}
