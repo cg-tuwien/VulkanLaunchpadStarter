@@ -2,7 +2,7 @@
 
 Starter template for a project based on [Vulkan Launchpad](https://github.com/cg-tuwien/VulkanLaunchpad)
 
-## Setup Instructions
+# Setup Instructions
 
 _Note:_ These setup instructions are an extended edition of [Vulkan Launchpad](https://github.com/cg-tuwien/VulkanLaunchpad)'s.
 
@@ -20,9 +20,9 @@ Vulkan Launchpad runs on Windows, MacOS, and Linux. For building you'll need [Gi
     - [Visual Studio Code (VS Code)](#visual-studio-code-vs-code)
     - [Visual Studio 2022 Community](#visual-studio-2022-community)
 
-### Operating Systems
+## Operating Systems
 
-#### Windows
+### Windows
 - Download and install [Git for Windows](https://git-scm.com/download/win)!
     - Add Git to your PATH! This can be done through the installer, selecting the `Git from the command line and also from 3rd-party software` option. 
 - Download and install one of the latest [Vulkan SDKs for Windows](https://vulkan.lunarg.com/sdk/home#windows)! (At time of writing, the most recent version is 1.3.236.0.)
@@ -35,9 +35,9 @@ Vulkan Launchpad runs on Windows, MacOS, and Linux. For building you'll need [Gi
     - _Important:_ Ensure to get CMake version `3.22` or newer!
 
 
-#### Linux
+### Linux
 
-##### Dependencies
+#### Dependencies
 
 We tested the compilation on the four different Linux distributions below.
 Each of them has slightly different requirements, however the lines of bash code boil down to:
@@ -48,7 +48,7 @@ Each of them has slightly different requirements, however the lines of bash code
 4. Updates the default gcc and g++ version to the freshly installed version 11.
 5. Invokes `vulkaninfo` to see if the Vulkan SDK and graphics drivers are installed correctly.
 
-###### Ubuntu 22.04
+##### Ubuntu 22.04
 
 ```
 #!/bin/bash
@@ -74,7 +74,7 @@ echo "Now running \"vulkaninfo\" to see if vulkan has been installed successfull
 vulkaninfo
 ```
 
-###### Ubuntu 20.04
+##### Ubuntu 20.04
 
 _Note:_ Only tested in a Docker environment.
 
@@ -92,7 +92,7 @@ sudo apt update && sudo apt upgrade -y && sudo apt install -y wget gpg git lsb-r
 	sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 60 --slave /usr/bin/g++ g++ /usr/bin/g++-11
 ```
 
-###### Linux Mint 21.1
+##### Linux Mint 21.1
 
 _Note:_ Only tested in a Docker environment.
 
@@ -111,7 +111,7 @@ sudo apt update && sudo apt upgrade -y && sudo apt install -y mint-dev-tools bui
 	sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 60 --slave /usr/bin/g++ g++ /usr/bin/g++-11
 ```
 
-###### Debian Bullseye
+##### Debian Bullseye
 
 _Note:_ Only tested in a Docker environment.
 
@@ -149,7 +149,7 @@ git clone https://github.com/cg-tuwien/VulkanLaunchpadStarter.git && \
 	cmake --build . --config Debug
 ```
 
-###### Automatic Git Clone and Build via Commandline
+##### Automatic Git Clone and Build via Commandline
 
 ```
 git clone https://github.com/cg-tuwien/VulkanLaunchpadStarter.git && \
@@ -162,9 +162,9 @@ git clone https://github.com/cg-tuwien/VulkanLaunchpadStarter.git && \
 
 
 
-### Editors and IDEs
+## Editors and IDEs
 
-#### Visual Studio Code (VS Code)
+### Visual Studio Code (VS Code)
 - Download and install [Visual Studio Code](https://code.visualstudio.com/download)!
     - Select the option `Add "Open with Code" action to Widows Explorer directory context menu` for more convenience.
 - Install the following extensions (navigate to `View -> Extensions`):
@@ -201,6 +201,6 @@ _Note:_ Vulkan Launchpad Starter comes with a `.vscode/settings.json` file which
     _Note:_ The difference to the `VulkanLaunchpadStarter.exe` item (i.e., without `(in workspaceRoot)`) is that `VulkanLaunchpadStarter.exe (in workspaceRoot)` configures the current working directory to be the workspace root folder, which can be especially helpful when loading files from paths relative to the workspace root (like shader files).      
     This hs configured via the `.vs/launch.vs.json` config file.
 
-## Documentation
+# Documentation
 
 TODO
