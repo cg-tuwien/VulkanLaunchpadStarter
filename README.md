@@ -183,7 +183,7 @@ git clone https://github.com/cg-tuwien/VulkanLaunchpadStarter.git && \
 	
 _Note:_ Vulkan Launchpad Starter comes with a `.vscode/settings.json` file which configures the current working directory to be the workspace root folder, which can be especially helpful when loading files from paths relative to the workspace root (like shader files). Furthermore, configures an external console window to be shown, which might allow to focus better on messages printed to the console.
 
-#### Visual Studio 2022 Community
+### Visual Studio 2022 Community
 - Download and install [Visual Studio Community 2022](https://visualstudio.microsoft.com/vs/community/), or a newer version.
     - Select the `Desktop development with C++` workload in the installer!
     - Should you encounter CMake-related problems, install one of the latest versions of CMake _after_ installing Visual Studio Community 2022 using the [Windows x64 Installer](https://cmake.org/download/).
