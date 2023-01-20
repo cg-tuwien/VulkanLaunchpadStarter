@@ -9,6 +9,13 @@ _Note:_ These setup instructions are an extended edition of [Vulkan Launchpad](h
 Vulkan Launchpad runs on Windows, MacOS, and Linux. For building you'll need [Git](https://git-scm.com/), the [Vulkan SDK](https://www.lunarg.com/vulkan-sdk/), a C++ compiler, [CMake](https://cmake.org/) and optimally an integrated development environment (IDE). In the following, we describe setup instructions for common operating systems and editors/IDEs (click the links in the index to jump to the respective section):
 - [Operating Systems](#operating-systems)
     - [Windows](#windows)
+    - [Linux](#linux)
+        - [Dependencies](#dependencies)
+	- [Ubuntu 22.04](#ubuntu-2204)
+	- [Ubuntu 20.04](#ubuntu-2004)
+	- [Linux Mint 21.1](#linux-mint-211)
+	- [Debian Bullseye](#debian-bullseye)
+	- [Automatic Git Clone and Build via Commandline](#automatic-git-clone-and-build-via-commandline)
 - [Editors and IDEs](#editors-and-ides)
     - [Visual Studio Code (VS Code)](#visual-studio-code-vs-code)
     - [Visual Studio 2022 Community](#visual-studio-2022-community)
@@ -142,7 +149,7 @@ git clone https://github.com/cg-tuwien/VulkanLaunchpadStarter.git && \
 	cmake --build . --config Debug
 ```
 
-###### Automatic Git Clone and Build via Commandline:
+###### Automatic Git Clone and Build via Commandline
 
 ```
 git clone https://github.com/cg-tuwien/VulkanLaunchpadStarter.git && \
