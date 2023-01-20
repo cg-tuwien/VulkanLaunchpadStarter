@@ -6,9 +6,10 @@ Starter template for a project based on [Vulkan Launchpad](https://github.com/cg
 
 _Note:_ These setup instructions are an extended edition of [Vulkan Launchpad](https://github.com/cg-tuwien/VulkanLaunchpad)'s.
 
-Vulkan Launchpad runs on Windows, MacOS, and Linux. For building you'll need [Git](https://git-scm.com/), the [Vulkan SDK](https://www.lunarg.com/vulkan-sdk/), a C++ compiler, [CMake](https://cmake.org/) and optimally an integrated development environment (IDE). In the following, we describe setup instructions for common operating systems and editors/IDEs (click the links in the index to jump to the respective section):
+Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Git](https://git-scm.com/), the [Vulkan SDK](https://www.lunarg.com/vulkan-sdk/), a C++ compiler, [CMake](https://cmake.org/) and optimally an integrated development environment (IDE). In the following, we describe setup instructions for common operating systems and editors/IDEs (click the links in the index to jump to the respective section):
 - [Operating Systems](#operating-systems)
     - [Windows](#windows)
+    - [macOS](#macos)
     - [Linux](#linux)
         - [Dependencies](#dependencies)
         - [Ubuntu 22.04](#ubuntu-2204)
@@ -34,6 +35,9 @@ Vulkan Launchpad runs on Windows, MacOS, and Linux. For building you'll need [Gi
     - Select an option to `Add CMake to the system PATH ...` during installation!
     - _Important:_ Ensure to get CMake version `3.22` or newer!
 
+### macOS
+
+TODO
 
 ### Linux
 
@@ -171,15 +175,15 @@ git clone https://github.com/cg-tuwien/VulkanLaunchpadStarter.git && \
     - [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools) (which will also install the [CMake](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools) extension)
     - [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
     - _Recommended:_ [Shader languages support for VS Code](https://marketplace.visualstudio.com/items?itemName=slevesque.shader)
-    - Restart VS Code, or execute the comand `Developer: Reload Window` (default shortcut: `Ctrl+R` or **TODO: MacOS, Linux**)!
+    - Restart VS Code, or execute the comand `Developer: Reload Window`!
 - Open the folder containing the `CMakeLists.txt` file (the root folder of this repository)!
     - This can be accomplished through `File -> Open Folder...`, you might also get the option to `Open with Code` from a folder's context menu in Windows Explorer.
-- Execute the following commands (either through `Show All Commands`, which can be activated by default via `Ctrl+Shift+P` or **TODO: MacOS, Linux**, or you'll also find buttons for these actions at the bottom of the VS Code window):
+- Execute the following commands (either through `Show All Commands`, which can be activated by default via `Ctrl+Shift+P` or `Cmd+Shift+P` (macOS), or you'll also find buttons for these actions at the bottom of the VS Code window):
     - `CMake: Select a Kit` then select, e.g., `Visual Studio Build Tools 2022 Release - amd64` (if you are using Windows and have installed the `Build Tools for Visual Studio 2022`).
     - `CMake: Select Variant` and select `Debug` for a build with debug information, or `Release` for one without.
     - `CMake: Build Target`, then select `VulkanLaunchpadStarter EXECUTABLE` to build Vulkan Launchpad Starter as an executable. Alternatively, just build everything by selecting `ALL_BUILD`.
-    - `CMake: Debug` to start debugging the the selected target (default shortcut: `Ctrl+F5` or **TODO: MacOS, Linux**).
-    - `CMake: Run` to start debugging the the selected target (default shortcut: `Shift+F5` or **TODO: MacOS, Linux**).
+    - `CMake: Debug` to start debugging the the selected target (default shortcut: `Ctrl+F5`).
+    - `CMake: Run` to start debugging the the selected target (default shortcut: `Shift+F5`).
 	
 _Note:_ Vulkan Launchpad Starter comes with a `.vscode/settings.json` file which configures the current working directory to be the workspace root folder, which can be especially helpful when loading files from paths relative to the workspace root (like shader files). Furthermore, configures an external console window to be shown, which might allow to focus better on messages printed to the console.
 
