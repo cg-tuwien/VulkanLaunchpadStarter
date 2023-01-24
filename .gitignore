@@ -53,7 +53,8 @@
 **/obj/
 
 # Visual Studio
-**/.vs
+.vs/**
+!.vs/launch.vs.json
 
 # CLion
 **/.idea
