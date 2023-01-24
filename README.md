@@ -164,8 +164,6 @@ git clone https://github.com/cg-tuwien/VulkanLaunchpadStarter.git && \
 	cmake --build . --config Debug
 ```
 
-
-
 ## Editors and IDEs
 
 ### Visual Studio Code (VS Code)
@@ -181,6 +179,7 @@ git clone https://github.com/cg-tuwien/VulkanLaunchpadStarter.git && \
 - Execute the following commands (either through `Show All Commands`, which can be activated by default via `Ctrl+Shift+P` or `Cmd+Shift+P` (macOS), or you'll also find buttons for these actions at the bottom of the VS Code window):
     - `CMake: Select a Kit` then select, e.g., `Visual Studio Build Tools 2022 Release - amd64` (if you are using Windows and have installed the `Build Tools for Visual Studio 2022`).
     - `CMake: Select Variant` and select `Debug` for a build with debug information, or `Release` for one without.
+    - The above command should also trigger CMake's configuration step. If it doesn't, execute `CMake: Configure`!
     - `CMake: Build Target`, then select `VulkanLaunchpadStarter EXECUTABLE` to build Vulkan Launchpad Starter as an executable. Alternatively, just build everything by selecting `ALL_BUILD`.
     - `CMake: Debug` to start debugging the the selected target (default shortcut: `Ctrl+F5`).
     - `CMake: Run` to start debugging the the selected target (default shortcut: `Shift+F5`).
@@ -201,9 +200,9 @@ _Note:_ Vulkan Launchpad Starter comes with a `.vscode/settings.json` file which
         - If not, check if the `Show output from:` combobox is set to the option `CMake`!
         - Wait a bit until you see the message `CMake generation finished.`.
     - Execute `Build -> Build All` (default shortcut: `Ctrl+Shift+B`) to build Vulkan Launchpad Starter as an executable (and also builds all the other targets).
-- To debug or run the executable, please select the `VulkanLaunchpadStarter.exe (in workspaceRoot)` item from the `Select Startup Item` combobox. `F5` starts debugging the selected item, `Ctrl+F5` runs the selected item without debugging.
+- To debug or run the executable, please select the `VulkanLaunchpadStarter.exe (in workspaceRoot)` item from the `Select Startup Item` combobox. `F5` starts debugging the selected item, `Ctrl+F5` runs the selected item without debugging.     
     _Note:_ The difference to the `VulkanLaunchpadStarter.exe` item (i.e., without `(in workspaceRoot)`) is that `VulkanLaunchpadStarter.exe (in workspaceRoot)` configures the current working directory to be the workspace root folder, which can be especially helpful when loading files from paths relative to the workspace root (like shader files).      
-    This hs configured via the `.vs/launch.vs.json` config file.
+    This is configured via the `.vs/launch.vs.json` config file.
 
 # Documentation
 
