@@ -201,7 +201,7 @@ _Note:_ Vulkan Launchpad Starter comes with a `.vscode/settings.json` file which
         - Wait a bit until you see the message `CMake generation finished.`.
     - Execute `Build -> Build All` (default shortcut: `Ctrl+Shift+B`) to build Vulkan Launchpad Starter as an executable (and also builds all the other targets).
 - To debug or run the executable, please select the `VulkanLaunchpadStarter.exe (in workspaceRoot)` item from the `Select Startup Item` combobox. `F5` starts debugging the selected item, `Ctrl+F5` runs the selected item without debugging.     
-    _Note:_ The difference to the `VulkanLaunchpadStarter.exe` item (i.e., without `(in workspaceRoot)`) is that `VulkanLaunchpadStarter.exe (in workspaceRoot)` configures the current working directory to be the workspace root folder, which can be especially helpful when loading files from paths relative to the workspace root (like shader files).      
+    _Note:_ The difference to the `VulkanLaunchpadStarter.exe` item (i.e., without "`(in workspaceRoot)`") is that `VulkanLaunchpadStarter.exe (in workspaceRoot)` configures the current working directory to be the workspace root folder, which can be especially helpful when loading files from paths relative to the workspace root (like shader files).      
     This is configured via the `.vs/launch.vs.json` config file.
 
 # Documentation
