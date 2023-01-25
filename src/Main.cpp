@@ -206,9 +206,10 @@ int main(int argc, char** argv)
 	queue_create_info.pQueuePriorities = &queue_priority;
 	
 	// TODO: Create an instance of VkDeviceCreateInfo and use it to create one queue!
-	//       For this purpose, hook in queue_create_info at the right place!
-	//       Furthermore, use VkDeviceCreateInfo::enabledExtensionCount and VkDeviceCreateInfo::ppEnabledExtensionNames
+	//        - Hook in queue_create_info at the right place!
+	//        - Use VkDeviceCreateInfo::enabledExtensionCount and VkDeviceCreateInfo::ppEnabledExtensionNames
 	//         to enable the VK_KHR_SWAPCHAIN_EXTENSION_NAME device extension!
+	//        - The other parameters are not required (ensure that they are zero-initialized).
 	//       Finally, use vkCreateDevice to create the device and assign its handle to vk_device!
 	result = VK_ERROR_INITIALIZATION_FAILED;
 	VKL_CHECK_VULKAN_RESULT(result);
