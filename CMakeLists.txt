@@ -36,7 +36,13 @@ add_subdirectory(VulkanLaunchpad)
 #================================#
 # VulkanLaunchpadStarter         #
 #================================#
-add_executable(${PROJECT_NAME} src/Main.cpp src/VulkanHelpers.cpp src/Teapot.cpp)
+add_executable(${PROJECT_NAME} 
+    src/Main.cpp 
+    src/VulkanHelpers.h
+    src/VulkanHelpers.cpp 
+    src/Teapot.h 
+    src/Teapot.cpp 
+)
 target_link_libraries(${PROJECT_NAME} PRIVATE VulkanLaunchpad)
 add_dependencies(${PROJECT_NAME} VulkanLaunchpad)
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
