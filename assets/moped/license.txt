@@ -1,0 +1,21 @@
+============================================================================
+moped.obj
+============================================================================
+Original version:
+
+License: CC BY 4.0
+https://creativecommons.org/licenses/by/4.0/
+
+(c) 2022 Millsov Mills (https://sketchfab.com/vova_mills)
+
+============================================================================
+Modified version:
+
+License: CC BY 4.0
+https://creativecommons.org/licenses/by/4.0/
+
+2023 Elias Kristmann 
+
+Converted the model from blenders FBX export to OBJ wavefront.
+Renamed from "final" to "moped". 
+Combined materials into a texture atlas: model.dss

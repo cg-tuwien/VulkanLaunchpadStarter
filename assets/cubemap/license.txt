@@ -1,0 +1,9 @@
+============================================================================
+negx.dds, negy.dds, negz.dds, posx.dds, posy.dds, posz.dds
+============================================================================
+
+License: CC0 - Public Domain
+https://creativecommons.org/share-your-work/public-domain/cc0/
+
+Downloaded from:
+Poly Haven, https://polyhaven.com/
