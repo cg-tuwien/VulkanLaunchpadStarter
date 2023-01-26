@@ -113,7 +113,7 @@ int main(int argc, char** argv)
 	application_info.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO; // Set this struct instance's type
 	application_info.pEngineName = "Vulkan Launchpad";           // Set some properties...
 	application_info.engineVersion = VK_MAKE_API_VERSION(0, 2023, 1, 0);
-	application_info.pApplicationName = "Tutorial";
+	application_info.pApplicationName = "An Introduction to Vulkan";
 	application_info.applicationVersion = VK_MAKE_API_VERSION(0, 2023, 1, 1);
 	application_info.apiVersion = VK_API_VERSION_1_1;            // Your system needs to support this Vulkan API version.
 
