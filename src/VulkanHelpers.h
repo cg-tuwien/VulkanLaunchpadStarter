@@ -5,6 +5,38 @@
 #include <vector>
 
 /* --------------------------------------------- */
+// Vulkan-Specific Helper Struct Definitions
+// As a convention, their names start with `Hlp`.
+/* --------------------------------------------- */
+
+/*!
+ * A struct containing all data for a geometry object on the GPU-side.
+ * Concretely, includes handles for the positions, normals, and texture 
+ * coordinate buffers as well as the number of indices and their format. 
+ */
+struct HlpGeometryHandles {
+	//! A handle to a Vulkan Buffer intended to contain the vertex position data.
+	VkBuffer positionsBuffer;
+
+	//! A handle to a Vulkan Buffer intended to contain the face index data.
+	VkBuffer indicesBuffer;
+
+	//! A handle to a Vulkan Buffer intended to contain the vertex normal data.
+	VkBuffer normalsBuffer;
+
+	//! A handle to a Vulkan Buffer on the GPU intended to contain vertex texture coordinates.
+	VkBuffer textureCoordinatesBuffer;
+
+	//! The total number of indices in the `indicesBuffer`.
+	uint32_t numberOfIndices;
+
+	//! Specifies the size of the indices. In the context of Vulkan Launchpad, VK_INDEX_TYPE_UINT32
+	//! will be the right value in most cases---for example, vklLoadModelGeometry stores indices as 
+	//! uint32_t => use VK_INDEX_TYPE_UINT32 to match its type!
+	VkIndexType indexType;
+ };
+
+/* --------------------------------------------- */
 // Vulkan-Specific Helper Function Definitions
 // As a convention, their names start with `hlp`.
 /* --------------------------------------------- */
