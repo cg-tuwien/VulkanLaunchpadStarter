@@ -196,7 +196,7 @@ _Note:_ Vulkan Launchpad Starter comes with a `.vscode/settings.json` file which
     - _Hint:_ Go to `Tools -> Options -> GLSL language integration`. For Vulkan shader development, either set `Live compiling` to `False` (syntax highlighting only), or set the `External compiler executable file` to, e.g., the path to `glslangValidator.exe`!
 - Open the folder containing the `CMakeLists.txt` file (the root folder of this repository)!
     - This can be accomplished through `File -> Open -> Folder...`, you might also get the option to `Open with Visual Studio` from a folder's context menu in Windows Explorer.
-    - You should be able to observer in the `Output` tab that CMake generation started.
+    - You should be able to observe in the `Output` tab that CMake generation started.
         - If not, check if the `Show output from:` combobox is set to the option `CMake`!
         - Wait a bit until you see the message `CMake generation finished.`.
     - Execute `Build -> Build All` (default shortcut: `Ctrl+Shift+B`) to build Vulkan Launchpad Starter as an executable (and also builds all the other targets).
