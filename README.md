@@ -6,7 +6,7 @@ Starter template for a project based on [Vulkan Launchpad](https://github.com/cg
 
 _Note:_ These setup instructions are an extended edition of [Vulkan Launchpad](https://github.com/cg-tuwien/VulkanLaunchpad)'s.
 
-Vulkan Launchpad runs on Windows, MacOS, and Linux. For building you'll need [Git](https://git-scm.com/), the [Vulkan SDK](https://www.lunarg.com/vulkan-sdk/), a C++ compiler, [CMake](https://cmake.org/), and optimally an integrated development environment (IDE). In the following, we describe setup instructions for common operating systems and editors/IDEs (click the links in the table of contents to jump to the sections that are relevant to your chosen setup):
+Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Git](https://git-scm.com/), the [Vulkan SDK](https://www.lunarg.com/vulkan-sdk/), a C++ compiler, [CMake](https://cmake.org/), and optimally an integrated development environment (IDE). In the following, we describe setup instructions for common operating systems and editors/IDEs (click the links in the table of contents to jump to the sections that are relevant to your chosen setup):
 - [Operating Systems](#operating-systems)
     - [Windows](#windows)
     - [macOS](#macos)
