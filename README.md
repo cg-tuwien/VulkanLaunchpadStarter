@@ -7,19 +7,23 @@ Starter template for a project based on [Vulkan Launchpad](https://github.com/cg
 _Note:_ These setup instructions are an extended edition of [Vulkan Launchpad](https://github.com/cg-tuwien/VulkanLaunchpad)'s.
 
 Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Git](https://git-scm.com/), the [Vulkan SDK](https://www.lunarg.com/vulkan-sdk/), a C++ compiler, [CMake](https://cmake.org/), and optimally an integrated development environment (IDE). In the following, we describe setup instructions for common operating systems and editors/IDEs (click the links in the table of contents to jump to the sections that are relevant to your chosen setup):
-- [Operating Systems](#operating-systems)
-    - [Windows](#windows)
-    - [macOS](#macos)
-    - [Linux](#linux)
-        - [Dependencies](#dependencies)
-        - [Ubuntu 22.04](#ubuntu-2204)
-        - [Ubuntu 20.04](#ubuntu-2004)
-        - [Linux Mint 21.1](#linux-mint-211)
-        - [Debian Bullseye](#debian-bullseye)
-        - [Automatic Git Clone and Build via Commandline](#automatic-git-clone-and-build-via-commandline)
-- [Editors and IDEs](#editors-and-ides)
-    - [Visual Studio Code (VS Code)](#visual-studio-code-vs-code)
-    - [Visual Studio 2022 Community](#visual-studio-2022-community)
+- [Vulkan Launchpad Starter :rocket:](#vulkan-launchpad-starter-rocket)
+- [Setup Instructions](#setup-instructions)
+	- [Operating Systems](#operating-systems)
+		- [Windows](#windows)
+		- [macOS](#macos)
+		- [Linux](#linux)
+			- [Dependencies](#dependencies)
+				- [Ubuntu 22.04](#ubuntu-2204)
+				- [Ubuntu 20.04](#ubuntu-2004)
+				- [Linux Mint 21.1](#linux-mint-211)
+				- [Debian Bullseye](#debian-bullseye)
+				- [Automatic Git Clone and Build via Commandline](#automatic-git-clone-and-build-via-commandline)
+	- [Editors and IDEs](#editors-and-ides)
+		- [Visual Studio Code (VS Code)](#visual-studio-code-vs-code)
+		- [Visual Studio 2022 Community](#visual-studio-2022-community)
+		- [XCode](#xcode)
+- [Documentation](#documentation)
 
 ## Operating Systems
 
@@ -37,7 +41,14 @@ Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Gi
 
 ### macOS
 
-TODO
+- Download and install [Xcode](https://apps.apple.com/us/app/xcode/id497799835) from the Mac App Store!
+  - Install the `Xcode Command Line Tools` by executing `xcode-select --install` from command line. This will install `Git` to your system.
+- Download and install one of the latest [Vulkan SDKs for MacOS](https://vulkan.lunarg.com/sdk/home#mac)! (At time of writing, the most recent version is 1.3.236.0.)
+    - _Note:_ If you are using a Mac which runs on Apple silicon, it could happen that a popup, requiring you to install Rosetta, appears. Please do this, even though we are going to use native Apple silicon libraries throughout development.
+    - _Note:_ Make sure to tick the box called `System Global Installation` during installation so the Vulkan SDK can be found by the system.
+- Download and install CMake through its [macOS universal Installer](https://cmake.org/download/) or a package manager like [Homebrew](https://formulae.brew.sh/formula/cmake)!
+    - _Note:_ The official website installer will not automatically add CMake to the system Path. If you are planning to use CMake from the command line, you need to open the CMake app, go to `Tools/How to Install For Command Line Use` and execute one of the three instructions listed.
+    - _Important:_ Ensure to get CMake version `3.22` or newer!
 
 ### Linux
 
@@ -203,6 +214,17 @@ _Note:_ Vulkan Launchpad Starter comes with a `.vscode/settings.json` file which
 - To debug or run the executable, please select the `VulkanLaunchpadStarter.exe (in workspaceRoot)` item from the `Select Startup Item` combobox. `F5` starts debugging the selected item, `Ctrl+F5` runs the selected item without debugging.     
     _Note:_ The difference to the `VulkanLaunchpadStarter.exe` item (i.e., without "`(in workspaceRoot)`") is that the suggested item `VulkanLaunchpadStarter.exe (in workspaceRoot)` configures the current working directory to be the workspace root folder, which can be especially helpful when loading files from paths relative to the workspace root (like shader files).      
     This is configured via the `.vs/launch.vs.json` config file.
+
+### XCode
+- Download and install [Xcode](https://apps.apple.com/us/app/xcode/id497799835) from the Mac App Store!
+- Generate the Xcode project files!
+  - Command line Option
+    - Open a terminal window at the workspace root directory. This can be done by right clicking the folder and selecting `New Terminal at Folder`.
+    - Option 1: Execute `make` from the terminal. This uses the included `makefile` located in the workspace root directory. Project files can be found in `_project` afterwards.
+    - Option 2: Execute `cmake -H. -B_project -G "Xcode" -DCMAKE_INSTALL_PREFIX="_install"` from the terminal. You can also change `_project` and `_install` to different folders.
+  - CMake Gui Option
+    - Open the CMake Gui and specify the workspace root directory as the source directory. Specify a folder into which the generated project files should be stored. Click `Configure`, select Xcode as the Generator and press `Done`. After completion, press `Generate`.
+- Open `VulkanLaunchpadStarter.xcodeproj` with Xcode. The file should be located in the folder into which the project files were generated!
 
 # Documentation
 
