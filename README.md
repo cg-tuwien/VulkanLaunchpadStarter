@@ -24,6 +24,7 @@ Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Gi
 		- [Visual Studio 2022 Community](#visual-studio-2022-community)
 		- [XCode](#xcode)
 	- [Troubleshooting](#troubleshooting)
+		- [Submodule Updates Take a Long Time](#submodule-updates-take-a-long-time)
 - [Documentation](#documentation)
 
 ## Operating Systems
@@ -229,8 +230,10 @@ _Note:_ Vulkan Launchpad Starter comes with a `.vscode/settings.json` file which
 
 ## Troubleshooting
 
-The project setup takes too long during CMake configuration in my IDE: The submodules glfw/glm/glslang are cloning forever!
-* Please clone the repo "by hand" in a terminal in a new location using the following git commands:
+### Submodule Updates Take a Long Time
+
+In case you experience problems concerning the submodule checkout, i.e. the cloning of the submodules (GLFW, GLM or glslang) takes a long time or seems to be stuck, please try the following approach:
+* Please clone the repo manually in a terminal in a new location using the following git commands:
 	`git clone git@github.com:cg-tuwien/VulkanLaunchpadStarter.git && cd VulkanLaunchpadStarter && git submodule update --init --recursive`
 
 # Documentation
