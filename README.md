@@ -22,7 +22,7 @@ Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Gi
 	- [Editors and IDEs](#editors-and-ides)
 		- [Visual Studio Code (VS Code)](#visual-studio-code-vs-code)
 		- [Visual Studio 2022 Community](#visual-studio-2022-community)
-		- [XCode](#xcode)
+		- [Xcode](#xcode)
 	- [Troubleshooting](#troubleshooting)
 		- [Submodule Updates Take a Long Time](#submodule-updates-take-a-long-time)
 - [Documentation](#documentation)
@@ -217,7 +217,7 @@ _Note:_ Vulkan Launchpad Starter comes with a `.vscode/settings.json` file which
     _Note:_ The difference to the `VulkanLaunchpadStarter.exe` item (i.e., without "`(in workspaceRoot)`") is that the suggested item `VulkanLaunchpadStarter.exe (in workspaceRoot)` configures the current working directory to be the workspace root folder, which can be especially helpful when loading files from paths relative to the workspace root (like shader files).      
     This is configured via the `.vs/launch.vs.json` config file.
 
-### XCode
+### Xcode
 - Download and install [Xcode](https://apps.apple.com/us/app/xcode/id497799835) from the Mac App Store!
 - Generate the Xcode project files!
   - Command line Option
@@ -226,7 +226,7 @@ _Note:_ Vulkan Launchpad Starter comes with a `.vscode/settings.json` file which
     - Option 2: Execute `cmake -H. -B_project -G "Xcode" -DCMAKE_INSTALL_PREFIX="_install"` from the terminal.
   - CMake Gui Option
     - Open the CMake Gui and specify the workspace root directory as the source directory. Specify a folder into which the generated project files should be stored. Click `Configure`, select Xcode as the Generator and press `Done`. After completion, press `Generate`.
-- Open `VulkanLaunchpadStarter.xcodeproj` with Xcode. The file should be located in the folder into which the project files were generated!
+- Open `VulkanLaunchpadStarter.xcodeproj` with Xcode. The file should be located in the folder into which the project files were generated.
 
 ## Troubleshooting
 
