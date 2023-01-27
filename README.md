@@ -44,10 +44,10 @@ Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Gi
 - Download and install [Xcode](https://apps.apple.com/us/app/xcode/id497799835) from the Mac App Store!
   - Install the `Xcode Command Line Tools` by executing `xcode-select --install` from command line. This will install `Git` to your system.
 - Download and install one of the latest [Vulkan SDKs for MacOS](https://vulkan.lunarg.com/sdk/home#mac)! (At time of writing, the most recent version is 1.3.236.0.)
-  - _Note:_ If you are using a Mac which runs on Apple silicon, it could happen that a popup, requiring you to install Rosetta, appears. Please do this, even though we are going to use native Apple silicon libraries throughout development.
-  - _Note:_ Make sure to tick the box called `System Global Installation` during installation so the Vulkan SDK can be found by the system.
+  - _Note:_ If you are using a Mac which runs on Apple silicon, it could happen that a popup asks you to install Rosetta. Please confirm, even though we are going to use native Apple silicon libraries throughout development.
+  - _Important:_ Make sure to tick the box called `System Global Installation` during installation so the Vulkan SDK can be found by the system.
 - Download and install CMake through its [macOS universal Installer](https://cmake.org/download/) or a package manager like [Homebrew](https://formulae.brew.sh/formula/cmake)!
-  - _Note:_ The official website installer will not automatically add CMake to the system Path. If you are planning to use CMake from the command line, you need to open the CMake app, go to `Tools/How to Install For Command Line Use` and execute one of the three instructions listed.
+  - _Note:_ The official website installer will not automatically add CMake to the system PATH. If you are planning to use CMake from the command line, you need to open the CMake app, go to `Tools -> How to Install For Command Line Use` and execute one of the three instructions listed.
   - _Important:_ Ensure to get CMake version `3.22` or newer!
 
 ### Linux
@@ -221,7 +221,7 @@ _Note:_ Vulkan Launchpad Starter comes with a `.vscode/settings.json` file which
   - Command line Option
     - Open a terminal window at the workspace root directory. This can be done by right clicking the folder and selecting `New Terminal at Folder`.
     - Option 1: Execute `make` from the terminal. This uses the included `makefile` located in the workspace root directory. Project files can be found in `_project` afterwards.
-    - Option 2: Execute `cmake -H. -B_project -G "Xcode" -DCMAKE_INSTALL_PREFIX="_install"` from the terminal. You can also change `_project` and `_install` to different folders.
+    - Option 2: Execute `cmake -H. -B_project -G "Xcode" -DCMAKE_INSTALL_PREFIX="_install"` from the terminal.
   - CMake Gui Option
     - Open the CMake Gui and specify the workspace root directory as the source directory. Specify a folder into which the generated project files should be stored. Click `Configure`, select Xcode as the Generator and press `Done`. After completion, press `Generate`.
 - Open `VulkanLaunchpadStarter.xcodeproj` with Xcode. The file should be located in the folder into which the project files were generated!
