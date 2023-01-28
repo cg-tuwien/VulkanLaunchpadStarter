@@ -7,25 +7,23 @@ Starter template for a project based on [Vulkan Launchpad](https://github.com/cg
 _Note:_ These setup instructions are an extended edition of [Vulkan Launchpad](https://github.com/cg-tuwien/VulkanLaunchpad)'s.
 
 Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Git](https://git-scm.com/), the [Vulkan SDK](https://www.lunarg.com/vulkan-sdk/), a C++ compiler, [CMake](https://cmake.org/), and optimally an integrated development environment (IDE). In the following, we describe setup instructions for common operating systems and editors/IDEs (click the links in the table of contents to jump to the sections that are relevant to your chosen setup):
-- [Vulkan Launchpad Starter :rocket:](#vulkan-launchpad-starter-rocket)
-- [Setup Instructions](#setup-instructions)
-	- [Operating Systems](#operating-systems)
-		- [Windows](#windows)
-		- [macOS](#macos)
-		- [Linux](#linux)
-			- [Dependencies](#dependencies)
-				- [Ubuntu 22.04](#ubuntu-2204)
-				- [Ubuntu 20.04](#ubuntu-2004)
-				- [Linux Mint 21.1](#linux-mint-211)
-				- [Debian Bullseye](#debian-bullseye)
-				- [Automatic Git Clone and Build via Commandline](#automatic-git-clone-and-build-via-commandline)
-	- [Editors and IDEs](#editors-and-ides)
-		- [Visual Studio Code (VS Code)](#visual-studio-code-vs-code)
-		- [Visual Studio 2022 Community](#visual-studio-2022-community)
-		- [Xcode](#xcode)
-		- [Other](#other)
-	- [Troubleshooting](#troubleshooting)
-		- [Submodule Updates Take a Long Time](#submodule-updates-take-a-long-time)
+- [Operating Systems](#operating-systems)
+  - [Windows](#windows)
+  - [macOS](#macos)
+  - [Linux](#linux)
+    - [Dependencies](#dependencies)
+    - [Ubuntu 22.04](#ubuntu-2204)
+    - [Ubuntu 20.04](#ubuntu-2004)
+    - [Linux Mint 21.1](#linux-mint-211)
+    - [Debian Bullseye](#debian-bullseye)
+    - [Automatic Git Clone and Build via Commandline](#automatic-git-clone-and-build-via-commandline)
+- [Editors and IDEs](#editors-and-ides)
+  - [Visual Studio Code (VS Code)](#visual-studio-code-vs-code)
+  - [Visual Studio 2022 Community](#visual-studio-2022-community)
+  - [XCode](#xcode)
+  - [Other](#other)
+- [Troubleshooting](#troubleshooting)
+  	- [Submodule Updates Take a Long Time](#submodule-updates-take-a-long-time)
 - [Documentation](#documentation)
 
 ## Operating Systems
@@ -230,12 +228,12 @@ _Note:_ Vulkan Launchpad Starter comes with a `.vscode/settings.json` file which
 - Open `VulkanLaunchpadStarter.xcodeproj` with Xcode. The file should be located in the folder into which the project files were generated.
 
 ### Other
-Even though other CMake compatible IDEs like CLion or Qt Creator should also work, it is difficult for us to test them all. In case you want to use an IDE not tested by us, consider the following remarks for the setup process.
+Other IDEs (such as [CLion](https://www.jetbrains.com/clion/) or [Qt Creator](https://www.qt.io/product/development-tools)) are usable too as long as they support CMake. Please consider the following remarks for the setup process.
 - Make sure to set the working directory to the workspace directory.
 
 ## Troubleshooting
 
-### Submodule Updates Take a Long Time
+#### Submodule Updates Take a Long Time
 
 In case you experience problems concerning the submodule checkout, i.e. the cloning of the submodules (GLFW, GLM or glslang) takes a long time or seems to be stuck, please try the following approach:
 * Please clone the repo manually in a terminal in a new location using the following git commands:     
