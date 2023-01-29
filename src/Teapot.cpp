@@ -230,7 +230,7 @@ void teapotCreateGeometryAndBuffers()
 		}
 		VkMemoryRequirements memoryRequirements {};
 		vkGetBufferMemoryRequirements(device, mTeapotPositions, &memoryRequirements);
-		mTeapotPositionsMemory = vklAllocateHostCoherentMemoryForGivenRequirements(posBufferCreateInfo.size, memoryRequirements);
+		mTeapotPositionsMemory = vklAllocateMemoryForGivenRequirements(posBufferCreateInfo.size, memoryRequirements, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);
 		result = vkBindBufferMemory(device, mTeapotPositions, mTeapotPositionsMemory, 0);
 		if(result != VK_SUCCESS) {
 			VKL_EXIT_WITH_ERROR(std::string("Failed to bind the buffer memory for the teapot positions with error: ") + to_string(result));
@@ -248,7 +248,7 @@ void teapotCreateGeometryAndBuffers()
 		VkBufferCreateInfo indexBufferCreateInfo {};
 		indexBufferCreateInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
 		indexBufferCreateInfo.size = sizeof(indices[0]) * indices.size();
-		indexBufferCreateInfo.usage = VK_BUFFER_USAGE_INDEX_BUFFER_BIT; // <--- Mind the usage lfags!
+		indexBufferCreateInfo.usage = VK_BUFFER_USAGE_INDEX_BUFFER_BIT; // <--- Mind the usage flags!
 		auto result = vkCreateBuffer(device, &indexBufferCreateInfo, NULL, &mTeapotIndices);
 		if(result != VK_SUCCESS)
 		{
@@ -256,7 +256,7 @@ void teapotCreateGeometryAndBuffers()
 		}
 		VkMemoryRequirements memoryRequirements{};
 		vkGetBufferMemoryRequirements(device, mTeapotIndices, &memoryRequirements);
-		mTeapotIndicesMemory = vklAllocateHostCoherentMemoryForGivenRequirements(indexBufferCreateInfo.size, memoryRequirements);
+		mTeapotIndicesMemory = vklAllocateMemoryForGivenRequirements(indexBufferCreateInfo.size, memoryRequirements, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);
 		result = vkBindBufferMemory(device, mTeapotIndices, mTeapotIndicesMemory, 0);
 		if(result != VK_SUCCESS)
 		{
