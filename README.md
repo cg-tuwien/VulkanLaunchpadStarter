@@ -11,11 +11,9 @@ Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Gi
     - [Windows](#windows)
     - [macOS](#macos)
     - [Linux](#linux)
-        - [Required tools and dependencies](#required-tools-and-dependencies)
         - [Ubuntu and Linux Mint](#ubuntu-and-linux-mint)
         - [Fedora Workstation](#fedora-workstation)
         - [Manjaro](#manjaro)
-        - [Additional](#additional)
 - [Editors and IDEs](#editors-and-ides)
     - [Visual Studio Code (VS Code)](#visual-studio-code-vs-code)
     - [Visual Studio 2022 Community](#visual-studio-2022-community)
@@ -52,8 +50,9 @@ Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Gi
 
 ### Linux
 
-#### Required tools and dependencies 
-C++ Compiler, [Git](https://git-scm.com/), [CMake](https://cmake.org/), [Vulkan SDK](https://vulkan.lunarg.com/sdk/home#linux), [X.Org](https://www.x.org/wiki/) and Vulkan compatible driver.
+Requirements: C++ Compiler, [Git](https://git-scm.com/), [CMake](https://cmake.org/), [Vulkan SDK](https://vulkan.lunarg.com/sdk/home#linux), [X.Org](https://www.x.org/wiki/) and Vulkan compatible driver.
+
+In case you want to use [Ninja](https://ninja-build.org/) or other development tools please install them separately. The instructions below are the minimum dependencies to build Vulkan Launchpad.
 
 #### Ubuntu and Linux Mint
 ```bash
@@ -82,10 +81,6 @@ sudo dnf -y groupinstall "X Software Development"
 ```bash
 sudo pacman -Sy cmake base-devel vulkan-validation-layers
 ```
-
-#### Additional
-In case you want to use [Ninja](https://ninja-build.org/) or other development tools please install them separately. The instructions above are the minimum dependencies to build Vulkan Launchpad.
-
 
 ## Editors and IDEs
 
