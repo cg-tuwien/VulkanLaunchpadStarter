@@ -11,8 +11,10 @@ Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Gi
     - [Windows](#windows)
     - [macOS](#macos)
     - [Linux](#linux)
+        - [Required tools and dependencies](#required-tools-and-dependencies)
         - [Ubuntu and Linux Mint](#ubuntu-and-linux-mint)
         - [Fedora Workstation](#fedora-workstation)
+        - [Additional](#additional)
 - [Editors and IDEs](#editors-and-ides)
     - [Visual Studio Code (VS Code)](#visual-studio-code-vs-code)
     - [Visual Studio 2022 Community](#visual-studio-2022-community)
@@ -49,7 +51,7 @@ Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Gi
 
 ### Linux
 
-#### Required tools and dependencies: 
+#### Required tools and dependencies 
 C++ Compiler, [Git](https://git-scm.com/), [CMake](https://cmake.org/), [Vulkan SDK](https://vulkan.lunarg.com/sdk/home#linux), [X.Org](https://www.x.org/wiki/)
 
 #### Ubuntu and Linux Mint
@@ -58,9 +60,9 @@ C++ Compiler, [Git](https://git-scm.com/), [CMake](https://cmake.org/), [Vulkan 
 wget -qO - https://packages.lunarg.com/lunarg-signing-key-pub.asc | sudo tee /etc/apt/trusted.gpg.d/lunarg.asc
 
 # Add Vulkan package
-# Jammy Jellyfish (Ubuntu 22.04/22.10 and Linux Mint 21.1/21.0)
+# Jammy Jellyfish (Ubuntu 22.04/22.10 and Linux Mint 21.0/21.1)
 sudo wget -qO /etc/apt/sources.list.d/lunarg-vulkan-1.3.236-jammy.list https://packages.lunarg.com/vulkan/1.3.236/lunarg-vulkan-1.3.236-jammy.list
-# Focal Fossa (Ubuntu 20.04/20.10 and Linux Mint 20.3/20.2/20.1/20.0)
+# Focal Fossa (Ubuntu 20.04/20.10 and Linux Mint 20.0/20.1/20.2/20.3)
 sudo wget -qO /etc/apt/sources.list.d/lunarg-vulkan-1.3.236-focal.list https://packages.lunarg.com/vulkan/1.3.236/lunarg-vulkan-1.3.236-focal.list
 
 # Update package manager
