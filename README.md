@@ -14,6 +14,7 @@ Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Gi
         - [Required tools and dependencies](#required-tools-and-dependencies)
         - [Ubuntu and Linux Mint](#ubuntu-and-linux-mint)
         - [Fedora Workstation](#fedora-workstation)
+        - [Manjaro](#manjaro)
         - [Additional](#additional)
 - [Editors and IDEs](#editors-and-ides)
     - [Visual Studio Code (VS Code)](#visual-studio-code-vs-code)
@@ -52,7 +53,7 @@ Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Gi
 ### Linux
 
 #### Required tools and dependencies 
-C++ Compiler, [Git](https://git-scm.com/), [CMake](https://cmake.org/), [Vulkan SDK](https://vulkan.lunarg.com/sdk/home#linux), [X.Org](https://www.x.org/wiki/)
+C++ Compiler, [Git](https://git-scm.com/), [CMake](https://cmake.org/), [Vulkan SDK](https://vulkan.lunarg.com/sdk/home#linux), [X.Org](https://www.x.org/wiki/) and Vulkan compatible driver.
 
 #### Ubuntu and Linux Mint
 ```bash
@@ -75,6 +76,11 @@ sudo apt install git cmake build-essential xorg-dev libvulkan-dev vulkan-headers
 ```bash
 sudo dnf install cmake gcc-c++ libXinerama-devel vulkan-loader-devel vulkan-headers vulkan-validation-layers-devel
 sudo dnf -y groupinstall "X Software Development"
+```
+
+#### Manjaro
+```bash
+sudo pacman -Sy cmake base-devel vulkan-validation-layers
 ```
 
 #### Additional
