@@ -18,7 +18,7 @@ Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Gi
     - [Visual Studio Code (VS Code)](#visual-studio-code-vs-code)
     - [Visual Studio 2022 Community](#visual-studio-2022-community)
     - [XCode](#xcode)
-    - [Other](#other)
+    - [Other IDEs](#other-ides)
 - [Troubleshooting](#troubleshooting)
     - [Submodule Updates Take a Long Time](#submodule-updates-take-a-long-time)
 - [Documentation](#documentation)
@@ -133,7 +133,7 @@ _Note:_ Vulkan Launchpad Starter comes with a `.vscode/settings.json` file which
     - Open the CMake Gui and specify the workspace root directory as the source directory. Specify a folder into which the generated project files should be stored. Click `Configure`, select Xcode as the Generator and press `Done`. After completion, press `Generate`.
 - Open `VulkanLaunchpadStarter.xcodeproj` with Xcode. The file should be located in the folder into which the project files were generated.
 
-### Other
+### Other IDEs
 Other IDEs (such as [CLion](https://www.jetbrains.com/clion/) or [Qt Creator](https://www.qt.io/product/development-tools)) are usable too as long as they support CMake. Please consider the following remarks for the setup process.
 - Make sure to set the working directory to the workspace directory.
 
