@@ -41,8 +41,8 @@ Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Gi
 
 - Download and install [Xcode](https://apps.apple.com/us/app/xcode/id497799835) from the Mac App Store!
   - Install the `Xcode Command Line Tools` by executing `xcode-select --install` from command line. This will install `Git` on your system.
-- Download and install one of the latest [Vulkan SDKs for MacOS](https://vulkan.lunarg.com/sdk/home#mac)! (At time of writing, the most recent version is 1.3.236.0.)
-  - _Note:_ If you are using a Mac which runs on Apple silicon, it could happen that a popup asks you to install Rosetta. Please confirm, even though we are going to use native Apple silicon libraries throughout development.
+- Download and install one of the latest [Vulkan SDKs for macOS](https://vulkan.lunarg.com/sdk/home#mac)! (At time of writing, the most recent version is 1.3.236.0.)
+  - _Note:_ If you are using a Mac which runs on Apple silicon, it could happen that a popup asks you to install Rosetta. Please confirm, even though we are going to use native Apple silicon libraries.
   - _Important:_ Make sure to tick the box called `System Global Installation` during installation so the Vulkan SDK can be found by the system.
 - Download and install CMake through its [macOS universal Installer](https://cmake.org/download/) or a package manager like [Homebrew](https://formulae.brew.sh/formula/cmake)!
   - _Note:_ The official website installer will not automatically add CMake to the system PATH. If you are planning to use CMake from the command line, you need to open the CMake app, go to `Tools -> How to Install For Command Line Use` and execute one of the three instructions listed.
