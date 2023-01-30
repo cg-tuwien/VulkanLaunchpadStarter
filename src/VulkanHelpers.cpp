@@ -123,3 +123,110 @@ VkSurfaceFormatKHR hlpGetSurfaceImageFormat(VkPhysicalDevice physical_device, Vk
 VkSurfaceTransformFlagBitsKHR hlpGetSurfaceTransform(VkPhysicalDevice physical_device, VkSurfaceKHR surface) {
     return hlpGetPhysicalDeviceSurfaceCapabilities(physical_device, surface).currentTransform;
 }
+
+void hlpRecordPipelineBarrierWithImageLayoutTransition(
+	VkCommandBuffer            command_buffer,
+	VkPipelineStageFlags       src_stage_mask,
+	VkPipelineStageFlags       dst_stage_mask,
+	VkAccessFlags              src_access_mask,
+	VkAccessFlags              dst_access_mask,
+	VkImage                    image,
+	VkImageLayout              old_layout,
+	VkImageLayout              new_layout)
+{
+	VkImageMemoryBarrier image_memory_barrier = {};
+	image_memory_barrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
+	image_memory_barrier.srcAccessMask = src_access_mask;
+	image_memory_barrier.dstAccessMask = dst_access_mask;
+	image_memory_barrier.oldLayout = old_layout;
+	image_memory_barrier.newLayout = new_layout;
+	image_memory_barrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+	image_memory_barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+	image_memory_barrier.image = image;
+	image_memory_barrier.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+	image_memory_barrier.subresourceRange.baseMipLevel = 0;
+	image_memory_barrier.subresourceRange.levelCount = 1;
+	image_memory_barrier.subresourceRange.baseArrayLayer = 0;
+	image_memory_barrier.subresourceRange.layerCount = 1;
+	vkCmdPipelineBarrier(command_buffer,
+		src_stage_mask, dst_stage_mask,
+		0,
+		0, nullptr,
+		0, nullptr,
+		1, &image_memory_barrier
+	);
+}
+
+void hlpRecordCopyBufferToImage(
+	VkCommandBuffer            command_buffer,
+	VkBuffer                   buffer,
+	VkImage                    image,
+	uint32_t                   image_width,
+	uint32_t                   image_height,
+	VkImageLayout              image_layout)
+{
+	VkBufferImageCopy buffer_image_copy_region = {};
+	buffer_image_copy_region.bufferOffset = 0;
+	buffer_image_copy_region.bufferRowLength = 0;
+	buffer_image_copy_region.bufferImageHeight = 0;
+	buffer_image_copy_region.imageSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+	buffer_image_copy_region.imageSubresource.mipLevel = 0;
+	buffer_image_copy_region.imageSubresource.baseArrayLayer = 0;
+	buffer_image_copy_region.imageSubresource.layerCount = 1;
+	buffer_image_copy_region.imageOffset = VkOffset3D{ 0, 0, 0 };
+	buffer_image_copy_region.imageExtent = VkExtent3D{ image_width, image_height, 1 };
+	vkCmdCopyBufferToImage(command_buffer, buffer, image, image_layout, 1, &buffer_image_copy_region);
+}
+
+VkImageView hlpCreateImageView(VkDevice device, VkImage image, VkFormat image_format)
+{
+	VkImageViewCreateInfo image_view_create_info = {};
+	image_view_create_info.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
+	image_view_create_info.image = image;
+	image_view_create_info.viewType = VK_IMAGE_VIEW_TYPE_2D;
+	image_view_create_info.format = image_format;
+	image_view_create_info.components.r = VK_COMPONENT_SWIZZLE_R;
+	image_view_create_info.components.g = VK_COMPONENT_SWIZZLE_G;
+	image_view_create_info.components.b = VK_COMPONENT_SWIZZLE_B;
+	image_view_create_info.components.a = VK_COMPONENT_SWIZZLE_A;
+	image_view_create_info.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+	image_view_create_info.subresourceRange.baseMipLevel = 0u;
+	image_view_create_info.subresourceRange.levelCount = 1u;
+	image_view_create_info.subresourceRange.baseArrayLayer = 0u;
+	image_view_create_info.subresourceRange.layerCount = 1u;
+
+	VkImageView image_view;
+	VkResult result = vkCreateImageView(device, &image_view_create_info, nullptr, &image_view);
+	VKL_CHECK_VULKAN_RESULT(result);
+
+	return image_view;
+}
+
+void hlpDestroyImageView(VkDevice device, VkImageView image_view)
+{
+	vkDestroyImageView(device, image_view, nullptr);
+}
+
+VkSampler hlpCreateSampler(VkDevice device, VkFilter mag_filter, VkFilter min_filter)
+{
+	VkSamplerCreateInfo sampler_create_info = {};
+	sampler_create_info.sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;
+	sampler_create_info.magFilter = mag_filter;
+	sampler_create_info.minFilter = min_filter;
+	sampler_create_info.addressModeU = VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER;
+	sampler_create_info.addressModeV = VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER;
+	sampler_create_info.mipmapMode = VK_SAMPLER_MIPMAP_MODE_NEAREST;
+	sampler_create_info.minLod = 0.0f;
+	sampler_create_info.maxLod = 0.0f;
+
+	VkSampler sampler;
+	VkResult result = vkCreateSampler(device, &sampler_create_info, nullptr, &sampler);
+	VKL_CHECK_VULKAN_RESULT(result);
+
+	return sampler;
+}
+
+void hlpDestroySampler(VkDevice device, VkSampler sampler)
+{
+	vkDestroySampler(device, sampler, nullptr);
+}
