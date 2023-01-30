@@ -184,7 +184,7 @@ int main(int argc, char** argv)
 	// Sanity check if we have selected a valid queue family index:
 	uint32_t queue_family_count = 0;
 	vkGetPhysicalDeviceQueueFamilyProperties(vk_physical_device, &queue_family_count, nullptr);
-	if (selected_queue_family_index > queue_family_count) {
+	if (selected_queue_family_index >= queue_family_count) {
 		VKL_EXIT_WITH_ERROR("Invalid queue family index selected.");
 	}
 	VKL_LOG("Task 1.5 done.");
