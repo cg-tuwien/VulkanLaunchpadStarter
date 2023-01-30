@@ -181,15 +181,13 @@ int main(int argc, char** argv)
 	//       Hint: Use selectQueueFamilyIndex, but complete its implementation before!
 	uint32_t selected_queue_family_index = std::numeric_limits<uint32_t>::max();
 
-	// Sanity check:
-	{
-		uint32_t queue_family_count = 0;
-		vkGetPhysicalDeviceQueueFamilyProperties(vk_physical_device, &queue_family_count, nullptr);
-		if (selected_queue_family_index > queue_family_count) {
-			VKL_EXIT_WITH_ERROR("Invalid queue family index selected.");
-		}
-		VKL_LOG("Task 1.5 done.");
+	// Sanity check if we have selected a valid queue family index:
+	uint32_t queue_family_count = 0;
+	vkGetPhysicalDeviceQueueFamilyProperties(vk_physical_device, &queue_family_count, nullptr);
+	if (selected_queue_family_index > queue_family_count) {
+		VKL_EXIT_WITH_ERROR("Invalid queue family index selected.");
 	}
+	VKL_LOG("Task 1.5 done.");
 
 	/* --------------------------------------------- */
 	// Task 1.6: Create a Logical Device and Get Queue
@@ -197,7 +195,7 @@ int main(int argc, char** argv)
 	VkDevice vk_device = VK_NULL_HANDLE;
 	VkQueue  vk_queue  = VK_NULL_HANDLE;
 	
-	const float queue_priority = 1.0f;
+	constexpr float queue_priority = 1.0f;
 
 	VkDeviceQueueCreateInfo queue_create_info = {};
 	queue_create_info.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
@@ -243,6 +241,7 @@ int main(int argc, char** argv)
 	swapchain_create_info.preTransform = surface_capabilities.currentTransform;
 	swapchain_create_info.compositeAlpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
 	swapchain_create_info.clipped = VK_TRUE;
+	swapchain_create_info.imageSharingMode = VK_SHARING_MODE_EXCLUSIVE;
 	// TODO: Provide values for:
 	//        - VkSwapchainCreateInfoKHR::queueFamilyIndexCount
 	//        - VkSwapchainCreateInfoKHR::pQueueFamilyIndices
