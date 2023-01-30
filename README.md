@@ -17,7 +17,7 @@ Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Gi
 - [Editors and IDEs](#editors-and-ides)
     - [Visual Studio Code (VS Code)](#visual-studio-code-vs-code)
     - [Visual Studio 2022 Community](#visual-studio-2022-community)
-    - [XCode](#xcode)
+    - [Xcode](#xcode)
     - [Other IDEs](#other-ides)
 - [Troubleshooting](#troubleshooting)
     - [Submodule Updates Take a Long Time](#submodule-updates-take-a-long-time)
