@@ -134,7 +134,7 @@ _Note:_ Vulkan Launchpad Starter comes with a `.vscode/settings.json` file which
 - Open `VulkanLaunchpadStarter.xcodeproj` with Xcode. The file should be located in the folder into which the project files were generated.
 
 ### Other IDEs
-Other IDEs (such as [CLion](https://www.jetbrains.com/clion/) or [Qt Creator](https://www.qt.io/product/development-tools)) are usable too as long as they support CMake. Please consider the following remarks for the setup process.
+Other IDEs (such as [CLion](https://www.jetbrains.com/clion/) or [Qt Creator](https://www.qt.io/product/development-tools)) are usable too as long as they support CMake. Please consider the following remarks for the setup process:
 - Make sure to set the working directory to the workspace directory.
 
 ## Troubleshooting
