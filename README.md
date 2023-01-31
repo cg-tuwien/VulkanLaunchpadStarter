@@ -29,7 +29,7 @@ Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Gi
 - Download and install [Git for Windows](https://git-scm.com/download/win)!
     - Add Git to your PATH! This can be done through the installer, selecting the `Git from the command line and also from 3rd-party software` option. 
 - Download and install one of the latest [Vulkan SDKs for Windows](https://vulkan.lunarg.com/sdk/home#windows)! (At time of writing, the most recent version is 1.3.236.0.)
-    - _Note:_ It is not required to install any optional components, if you make only x64 builds.
+    - _Note:_ It is not required to install any optional components, if you create x64 builds only.
 - Download and install the Microsoft Visual C++ compiler (MSVC) by installing the [Build Tools for Visual Studio 2022](https://visualstudio.microsoft.com/downloads/?q=build+tools) or a newer version!
     - Select the `Desktop development with C++` workload in the installer!
     - _Note:_ Should you decide to install Visual Studio Community 2022 (as described below), you don't have to install the Build Tools for Visual Studio 2022 separately. Also in this case of using the Visual Studio Community 2022 installer, ensure to select the `Desktop development with C++` workload! 
