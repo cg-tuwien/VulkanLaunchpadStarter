@@ -1,0 +1,24 @@
+============================================================================
+vespa.obj
+vespa.dds
+============================================================================
+Original version:
+
+Name: Amazon Lumberyard Bistro, Open Research Content Archive (ORCA)
+Author: Amazon Lumberyard
+Date: 2017, July
+Link: http://developer.nvidia.com/orca/amazon-lumberyard-bistro
+
+Updated: 2018-06-16
+License: CC-BY 4.0, https://creativecommons.org/licenses/by/4.0/
+© 2017 Amazon Lumberyard
+
+============================================================================
+Modified version:
+
+License: CC BY 4.0, https://creativecommons.org/licenses/by/4.0/
+
+2023 Elias Kristmann 
+
+Extracted the moped from the original 3D model.
+Converted to OBJ format, and textures to DDS format.
