@@ -33,4 +33,4 @@ else
 endif
 
 clean:
-	rm -r _project & rm -r _install
+	rm -r _project || true & rm -r _install || true
