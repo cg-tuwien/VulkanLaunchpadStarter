@@ -1,0 +1,25 @@
+============================================================================
+le_petit_coin.obj
+le_petit_coin.dds
+============================================================================
+Original version:
+
+Name: Amazon Lumberyard Bistro, Open Research Content Archive (ORCA)
+Author: Amazon Lumberyard
+Date: 2017, July
+Link: http://developer.nvidia.com/orca/amazon-lumberyard-bistro
+
+Updated: 2018-06-16
+License: CC-BY 4.0, https://creativecommons.org/licenses/by/4.0/
+© 2017 Amazon Lumberyard
+
+============================================================================
+Modified version:
+
+License: CC BY 4.0, https://creativecommons.org/licenses/by/4.0/
+
+2023 Elias Kristmann 
+
+Cut out a part of the original (much larger) 3D model.
+Converted to OBJ format, and textures to DDS format.
+Combined material textures into a texture atlas: le_petit_coin.dss
