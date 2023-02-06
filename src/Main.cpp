@@ -66,6 +66,8 @@ uint32_t selectQueueFamilyIndex(VkPhysicalDevice physical_device, VkSurfaceKHR s
 
 int main(int argc, char** argv)
 {
+	VKL_LOG(":::::: WELCOME TO VULKAN LAUNCHPAD ::::::");
+
 	// Install a callback function, which gets invoked whenever a GLFW error occurred:
 	glfwSetErrorCallback(errorCallbackFromGlfw);
 
@@ -96,6 +98,9 @@ int main(int argc, char** argv)
 	GLFWwindow* window = nullptr;
 	
 	if (!window) {
+		VKL_LOG("If your program reaches this point, that means two things:");
+		VKL_LOG("1) Project setup was successful. Everything is working fine.");
+		VKL_LOG("2) You haven't implemented the first task, which is creating a window with GLFW.");
 		VKL_EXIT_WITH_ERROR("No GLFW window created.");
 	}
 	VKL_LOG("Task 1.1 done.");
