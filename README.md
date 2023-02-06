@@ -160,4 +160,33 @@ This may be the case, if you forgot to select `System Global Installation` durin
 
 # Documentation
 
-TODO
+Vulkan Launchpad Starter represents a project setup for an executable that links the [Vulkan Launchpad](https://github.com/cg-tuwien/VulkanLaunchpad) framework. Therefore, all of Vulkan Launchpad's functionality is provided here. Please have a look at Vulkan Launchpad's [Documentation](https://github.com/cg-tuwien/VulkanLaunchpad#documentation) to get an overview of its functionality!
+
+Vulkan Launchpad Starter adds the following functionality:
+
+**Vulkan Helpers:**      
+- `struct HlpGeometryHandles`: Struct intended for storing a bunch of geometry buffers.
+- `hlpIsInstanceExtensionSupported`: Test if a given extension is supported by the Vulkan instance.
+- `hlpIsInstanceLayerSupported`: Test if a given layer is supported by the Vulkan instance.
+- `hlpSelectPhysicalDeviceIndex`: Select a physical device index that supports graphics and presentation.
+- `hlpGetPhysicalDeviceSurfaceCapabilities`: Gets a given physical device's surface capabilities.
+- `hlpGetSurfaceImageFormat`: Get a suitable image format for a surface.
+- `hlpGetSurfaceTransform`: Get a surface's current transform.
+- `hlpRecordPipelineBarrierWithImageLayoutTransition`: Record a pipeline barrier with some default parameter and an image layout transition into a command buffer.
+- `hlpRecordCopyBufferToImage`: Copy a buffer's contents into the first mip level and first layer of an image.
+- `hlpCreateImageView`: Creates a `VkImageView` for the first mip level and first layer of a `VkImage`.
+- `hlpDestroyImageView`: Corresponding :point_up_2: destruction function.
+- `hlpCreateSampler`: Create a `VkSampler` with some default parameters.
+- `hlpDestroySampler`: Corresponding :point_up_2: destruction function.
+
+**Teapot Functionality:**    
+- `teapotCreateGeometryAndBuffers`: Create the geometry of a teapot model and stores it internally.
+- `teapotDestroyBuffers`: Corresponding :point_up_2: destruction function.
+- `teapotDraw`: Draws a teapot into the (Vulkan Launchpad-internally handled) current command buffer. 
+    There are multiple overloads:
+    - One that takes no parameters
+    - One that takes a custom `VkPipeline` and uses that for drawing.
+    - One that takes a custom `VkPipeline` and a `VkDescriptorSet` as parameters. The `VkDescriptorSet` is bound before the teapot is drawn with the `VkPipeline`.
+- `teapotGetPositionsBuffer`: Gets a `VkBuffer` handle containing the teapot's positions.
+- `teapotGetIndicesBuffer`: Gets a `VkBuffer` handle containing the teapot's indices.
+- `teapotGetNumIndices`: Gets the number of indices contained in the buffer returned by :point_up_2: `teapotGetIndicesBuffer`.
