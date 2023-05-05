@@ -2,6 +2,10 @@
 
 Starter template for a project based on [Vulkan Launchpad](https://github.com/cg-tuwien/VulkanLaunchpad)
 
+Sections:
+- [Setup Instructions](#setup-instructions)
+- [Documentation](#documentation)
+
 # Setup Instructions
 
 _Note:_ These setup instructions are an extended edition of [Vulkan Launchpad](https://github.com/cg-tuwien/VulkanLaunchpad)'s.
@@ -21,7 +25,8 @@ Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Gi
     - [Other IDEs](#other-ides)
 - [Troubleshooting](#troubleshooting)
     - [Submodule Updates Take a Long Time](#submodule-updates-take-a-long-time)
-- [Documentation](#documentation)
+    - [On macOS: CMake cannot find C/CXX compiler](#on-macos-cmake-cannot-find-ccxx-compiler)
+    - [On macOS: CMake cannot find Vulkan](#on-macos-cmake-cannot-find-vulkan)
 
 ## Operating Systems
 
