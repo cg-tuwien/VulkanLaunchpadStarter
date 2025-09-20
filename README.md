@@ -27,6 +27,7 @@ Vulkan Launchpad runs on Windows, macOS, and Linux. For building you'll need [Gi
     - [Submodule Updates Take a Long Time](#submodule-updates-take-a-long-time)
     - [On macOS: CMake cannot find C/CXX compiler](#on-macos-cmake-cannot-find-ccxx-compiler)
     - [On macOS: CMake cannot find Vulkan](#on-macos-cmake-cannot-find-vulkan)
+    - [ERROR: No GLFW window created](#error-no-glfw-window-created)
 
 ## Operating Systems
 
@@ -164,6 +165,16 @@ In case you had an existing XCode Command Line Tools installation, this error ma
 #### On macOS: CMake cannot find Vulkan
 
 This may be the case, if you forgot to select `System Global Installation` during the Vulkan SDK installation, leading to errors during cmake generation, as the location of the Vulkan libraries cannot be found. You can install it retroactively by executing the `MaintenanceTool.app` in the `VulkanSDK` folder and selecting `System Global Installation` as a component to add.
+
+#### ERROR: No GLFW window created
+
+You have followed the setup instructions, you have built the executable, you run it and you receive an error message which says:
+```
+ERROR:   No GLFW window created.
+```
+
+This is exactly what you should see if you haven't already implemented anything, but just built&run Vulkan Launchpad Starter as-is.         
+Look for `// TODO: ` comments in the code to get an idea what is requiried next in order to finish setup, like creating a GLFW window, creating a Vulkan instance, selecting a physical device, etc.
 
 # Documentation
 
