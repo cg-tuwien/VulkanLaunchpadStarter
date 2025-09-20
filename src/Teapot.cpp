@@ -5,6 +5,12 @@
 #include <VulkanLaunchpad.h>
 #include <vulkan/vulkan.hpp>
 
+#if VK_HEADER_VERSION >= 302
+#define DISPATCH_LOADER_NAMESPACE vk::detail
+#else 
+#define DISPATCH_LOADER_NAMESPACE vk
+#endif
+
 uint32_t mNumTeapotIndices;
 VkBuffer mTeapotPositions;
 VkDeviceMemory mTeapotPositionsMemory;
@@ -216,7 +222,7 @@ void teapotCreateGeometryAndBuffers()
 
 	mNumTeapotIndices = static_cast<uint32_t>(indices.size());
 	const auto device = vklGetDevice();
-	auto dispatchLoader = vk::DispatchLoaderStatic();
+	auto dispatchLoader = DISPATCH_LOADER_NAMESPACE::DispatchLoaderStatic();
 
 	// 1. POSITIONS BUFFER (Buffer, Memory, Bind 'em together, copy data into it)
 	{
